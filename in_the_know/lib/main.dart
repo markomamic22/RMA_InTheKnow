@@ -1,6 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:in_the_know/rss_utils.dart' as utils;
 
 void main() {
+  dynamic x = utils.returnFeed("https://www.nytimes.com/");
+  if (kDebugMode) {
+    print(x.description);
+  }
   runApp(const MyApp());
 }
 
