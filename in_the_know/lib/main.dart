@@ -1,6 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:in_the_know/rss_utils.dart' as utils;
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webfeed/webfeed.dart';
 
 void main() {
@@ -79,18 +83,55 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
                                   Expanded(
                                     child: Text(
                                       snapshot.data!.items![position].title!,
-                                      style: Theme.of(context).textTheme.headlineSmall,
-                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                    ),
                                   ),
-                                  Image.network(snapshot?.data?.items?[position].media?.contents?.length !=0? snapshot.data!.items![position].media!.contents!.first!.url! : snapshot.data!.image!.url! )
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  ConstrainedBox(
+                                      constraints:
+                                          const BoxConstraints.tightFor(
+                                              width: 100, height: 100),
+                                      child: Image.network(snapshot
+                                                  ?.data
+                                                  ?.items?[position]
+                                                  .media
+                                                  ?.contents
+                                                  ?.length !=
+                                              0
+                                          ? snapshot.data!.items![position]
+                                              .media!.contents!.first!.url!
+                                          : snapshot.data!.image!.url!))
                                 ],
                               ),
+                              SizedBox(height: 16,),
+                              Text(snapshot.data!.items![position].pubDate!.toString().substring(0,19),
+                              textAlign: TextAlign.left,),
+                              Row(
+                                children: [
+                                   Expanded(
+                                     flex: 5,
+                                     child: Text(snapshot
+                                         .data!.items![position].description!,),
+                                   ),
+                                  SizedBox(width: 8,),
+                                  ConstrainedBox(
+                                      constraints: BoxConstraints.tightFor(width: 100,height: 100),
+                                      child: IconButton(onPressed: () async{
+                                            await launchUrlString(snapshot!.data!.items![position].link!);
+                                      }, icon: Icon(Icons.launch)))
+                                ],
+                              )
                             ],
                           ),
                         ),

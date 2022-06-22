@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   feed_finder: ^1.0.9
   webfeed: ^0.7.0
+  url_launcher: ^6.1.4
 
 dev_dependencies:
   flutter_test:
