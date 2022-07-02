@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:feed_finder/feed_finder.dart';
-import 'package:flutter/foundation.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
+
 Future<RssFeed> findFeed(var url) async {
   var feedUrl = await FeedFinder.scrape(url);
   final client = http.Client();
@@ -11,14 +11,13 @@ Future<RssFeed> findFeed(var url) async {
   var y = RssFeed.parse(utf8.decode(response.bodyBytes));
   client.close();
   return y;
-
 }
 
-/*RssFeed returnFeed(var url) {
-  findFeed(url).then((data) {}, onError: (e){if (kDebugMode) {
-    print(e);
+Future<List<RssFeed>> rssList(List listURL) async {
+  var listRSS = <RssFeed>[];
+  for (var element in listURL) {
+    var x = await findFeed(element);
+    listRSS.add(x);
   }
-  });
-  return data;
+  return listRSS;
 }
-*/

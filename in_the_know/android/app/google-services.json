@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "261132379814",
+    "project_id": "intheknow-c1165",
+    "storage_bucket": "intheknow-c1165.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261132379814:android:c79041d7429b0c503af667",
+        "android_client_info": {
+          "package_name": "com.ferit.markomamic.in_the_know"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261132379814-lq53emhiik7ci7tkopdqubq5q8gj8jaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl3q4ahmBXxOpMM7iwIeKs0N1Ier_YaPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261132379814-lq53emhiik7ci7tkopdqubq5q8gj8jaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
